@@ -1,15 +1,12 @@
-version: '3'
+version: '3.8'
+
 services:
-  LadyBot:
-    build:
-      context: .
-      dockerfile: dockerfile
+  bot:
+    build: .
+    container_name: deepseek_bot
+    restart: unless-stopped
+    env_file:
+      - .env  # Чтение переменных из файла .env
     volumes:
-      - '.:/opt/ChatGPT'
-    environment:
-      - aoi_key=${api_key}
-      - tg_token=${tg_token}
-    command: >
-      sh -c "python /opt/ChatGPT/main.py"
-    container_name: ChatGPT_Telegram_Bot
-    image: gpt_bot
+      - ./logs:/app/logs
+    image: ai_telegram_bot
