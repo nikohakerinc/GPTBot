@@ -5,11 +5,11 @@ services:
       context: .
       dockerfile: dockerfile
     volumes:
-      - '.:/opt/ChatGPT'
+      - '.:/opt/Gemini'
     environment:
-      - aoi_key=${api_key}
+      - api_key=${api_key}
       - tg_token=${tg_token}
     command: >
-      sh -c "python /opt/ChatGPT/main.py"
-    container_name: ChatGPT_Telegram_Bot
-    image: gpt_bot
+      sh -c "python /opt/Gemini/main.py"
+    container_name: Gemini_Bot
+    image: gemini2.5_bot
